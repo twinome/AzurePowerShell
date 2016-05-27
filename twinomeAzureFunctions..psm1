@@ -8,7 +8,7 @@
  
 /_____/_____/_____/_____/_____/_____/_____/_____/_____/
 
-Script: twinomeFunctions.ps1
+Script: twinomeAzureFunctions.ps1
 Author: Matt Warburton
 Date: 27/05/16
 Comments: Azure functions
