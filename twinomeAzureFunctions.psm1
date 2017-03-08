@@ -27,7 +27,8 @@ Function Start-TWAzureVM {
     #>
     [CmdletBinding()] 
     param (
-        [string]$name
+        [string]$name,
+        [string]$sName
     )
       
     BEGIN {
@@ -38,13 +39,13 @@ Function Start-TWAzureVM {
     PROCESS {
         
         try {
-            $vm = Get-AzureVM -Name $name -ServiceName $name
+            $vm = Get-AzureVM -Name $name -ServiceName $sName
             $status = $vm.Status
 
                 if($status -ne "ReadyRole") {
 
                     try {
-                        Start-AzureVM -name $name -ServiceName $name 
+                        Start-AzureVM -name $name -ServiceName $sName 
                         Write-Output "$name started"
                     }
 
@@ -81,7 +82,8 @@ Function Stop-TWAzureVM {
     #>
     [CmdletBinding()] 
     param (
-        [string]$name
+        [string]$name,
+        [string]$sName
     )
       
     BEGIN {
@@ -92,13 +94,13 @@ Function Stop-TWAzureVM {
     PROCESS {
         
         try {
-            $vm = Get-AzureVM -Name $name -ServiceName $name
+            $vm = Get-AzureVM -Name $name -ServiceName $sName
             $status = $vm.Status
 
                 if($status -eq "ReadyRole") {
 
                     try {
-                        Stop-AzureVM -name $name -ServiceName $name -Force
+                        Stop-AzureVM -name $name -ServiceName $sName -Force
                         Write-Output "$name stopped"
                     }
 
